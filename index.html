@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TwoUfUs – Stay Close, No Matter the Distance</title>
-  <meta name="description" content="TwoUfUs brings you and your partner closer with beautiful lock screen widgets – see your distance, share messages, and count down to your next moment together." />
+  <meta name="description" content="TwoUfUs brings you and your partner closer with beautiful lock screen widgets – see your distance, share a note, and count down to your next moment together." />
   <style>
     :root {
       --bg: #0e0e12;
@@ -17,65 +17,207 @@
       --card: #1a1a26;
       --border: rgba(232, 85, 109, 0.2);
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; background: rgba(14,14,18,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
-    .nav-logo { font-size: 1.3rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 40px;
+      background: rgba(14,14,18,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 1.3rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     .nav-links { display: flex; gap: 30px; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.95rem; transition: color .2s; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.95rem;
+      transition: color .2s;
+    }
     .nav-links a:hover { color: var(--text); }
-    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(232,85,109,0.15) 0%, transparent 70%); }
-    .hero-badge { display: inline-block; background: rgba(232,85,109,0.15); border: 1px solid var(--border); border-radius: 100px; padding: 6px 18px; font-size: 0.82rem; color: var(--accent2); margin-bottom: 28px; letter-spacing: 0.05em; }
-    .hero h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; max-width: 800px; margin-bottom: 22px; }
-    .hero h1 span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero p { font-size: 1.15rem; color: var(--muted); max-width: 540px; margin-bottom: 44px; }
-    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--accent), #c23d55); color: #fff; padding: 16px 32px; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: transform .2s, box-shadow .2s; box-shadow: 0 4px 20px rgba(232,85,109,0.4); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 120px 24px 80px;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(232,85,109,0.15) 0%, transparent 70%);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(232,85,109,0.15);
+      border: 1px solid var(--border);
+      border-radius: 100px; padding: 6px 18px;
+      font-size: 0.82rem; color: var(--accent2);
+      margin-bottom: 28px; letter-spacing: 0.05em;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      font-weight: 800; line-height: 1.1; letter-spacing: -0.02em;
+      max-width: 800px; margin-bottom: 22px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.15rem; color: var(--muted);
+      max-width: 540px; margin-bottom: 44px;
+    }
+    .hero-cta {
+      display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--accent), #c23d55);
+      color: #fff; padding: 16px 32px; border-radius: 100px;
+      text-decoration: none; font-weight: 600; font-size: 1rem;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(232,85,109,0.4);
+    }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,85,109,0.5); }
-    .btn-secondary { display: inline-flex; align-items: center; gap: 10px; background: var(--bg3); color: var(--text); padding: 16px 32px; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 1rem; border: 1px solid var(--border); transition: background .2s; }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--bg3); color: var(--text);
+      padding: 16px 32px; border-radius: 100px;
+      text-decoration: none; font-weight: 600; font-size: 1rem;
+      border: 1px solid var(--border); transition: background .2s;
+    }
     .btn-secondary:hover { background: var(--card); }
-    .widgets-preview { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 70px; }
-    .widget-card { background: var(--card); border: 1px solid var(--border); border-radius: 22px; padding: 22px; width: 160px; text-align: center; backdrop-filter: blur(8px); transition: transform .3s, box-shadow .3s; }
+
+    /* WIDGETS PREVIEW */
+    .widgets-preview {
+      display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
+      margin-top: 70px;
+    }
+    .widget-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px; padding: 22px;
+      width: 160px; text-align: center;
+      backdrop-filter: blur(8px);
+      transition: transform .3s, box-shadow .3s;
+    }
     .widget-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(232,85,109,0.2); }
     .widget-icon { font-size: 2.5rem; margin-bottom: 10px; }
     .widget-title { font-size: 0.82rem; font-weight: 600; color: var(--text); }
     .widget-sub { font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
+
+    /* SECTION */
     section { padding: 100px 24px; }
     .container { max-width: 1100px; margin: 0 auto; }
-    .section-label { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
-    .section-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 18px; }
+    .section-label {
+      font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); font-weight: 600; margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800;
+      line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 18px;
+    }
     .section-sub { color: var(--muted); max-width: 520px; font-size: 1.05rem; }
+
+    /* FEATURES */
     #features { background: var(--bg2); }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 60px; }
-    .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: transform .3s, border-color .3s; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px; margin-top: 60px;
+    }
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 32px;
+      transition: transform .3s, border-color .3s;
+    }
     .feature-card:hover { transform: translateY(-4px); border-color: var(--accent); }
     .feature-emoji { font-size: 2.2rem; margin-bottom: 18px; }
     .feature-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
     .feature-desc { color: var(--muted); font-size: 0.95rem; line-height: 1.65; }
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; margin-top: 60px; }
+
+    /* HOW IT WORKS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px; margin-top: 60px;
+    }
     .step { text-align: center; }
-    .step-num { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 800; margin: 0 auto 18px; box-shadow: 0 4px 16px rgba(232,85,109,0.4); }
+    .step-num {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; font-weight: 800; margin: 0 auto 18px;
+      box-shadow: 0 4px 16px rgba(232,85,109,0.4);
+    }
     .step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
     .step p { color: var(--muted); font-size: 0.92rem; }
-    #privacy-highlight { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .privacy-box { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 48px 40px; display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; }
+
+    /* PRIVACY HIGHLIGHT */
+    #privacy-highlight {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .privacy-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px; padding: 48px 40px;
+      display: flex; gap: 40px; align-items: flex-start;
+      flex-wrap: wrap;
+    }
     .privacy-icon { font-size: 3.5rem; }
     .privacy-content { flex: 1; min-width: 260px; }
     .privacy-content h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; }
     .privacy-content p { color: var(--muted); line-height: 1.7; margin-bottom: 18px; }
-    .privacy-link { color: var(--accent2); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+    .privacy-link {
+      color: var(--accent2); text-decoration: none; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
     .privacy-link:hover { text-decoration: underline; }
-    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 48px 24px; }
-    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 48px 24px;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 20px;
+    }
     .footer-logo { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
     .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
-    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+    .footer-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+      transition: color .2s;
+    }
     .footer-links a:hover { color: var(--text); }
     .footer-copy { color: var(--muted); font-size: 0.85rem; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .nav-links { display: none; } .privacy-box { padding: 30px 24px; } }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .privacy-box { padding: 30px 24px; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- NAV -->
   <nav>
     <div class="nav-logo">💑 TwoUfUs</div>
     <ul class="nav-links">
@@ -85,6 +227,8 @@
       <li><a href="privacy.html">Privacy</a></li>
     </ul>
   </nav>
+
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-badge">✨ Now available on the App Store</div>
     <h1>Stay close,<br><span>no matter the distance.</span></h1>
@@ -94,54 +238,125 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         Download on the App Store
       </a>
-      <a href="#features" class="btn-secondary">Learn more →</a>
+      <a href="#features" class="btn-secondary">
+        Learn more →
+      </a>
     </div>
+
+    <!-- Widget previews -->
     <div class="widgets-preview">
-      <div class="widget-card"><div class="widget-icon">📍</div><div class="widget-title">Distance</div><div class="widget-sub">See how far apart you are – live</div></div>
-      <div class="widget-card"><div class="widget-icon">💌</div><div class="widget-title">Messages</div><div class="widget-sub">Notes directly on your lock screen</div></div>
-      <div class="widget-card"><div class="widget-icon">⏳</div><div class="widget-title">Countdown</div><div class="widget-sub">Count down to your next moment</div></div>
+      <div class="widget-card">
+        <div class="widget-icon">📍</div>
+        <div class="widget-title">Distance</div>
+        <div class="widget-sub">See how far apart you are – live</div>
+      </div>
+      <div class="widget-card">
+        <div class="widget-icon">💌</div>
+        <div class="widget-title">Note</div>
+        <div class="widget-sub">One shared note on your lock screen</div>
+      </div>
+      <div class="widget-card">
+        <div class="widget-icon">⏳</div>
+        <div class="widget-title">Countdown</div>
+        <div class="widget-sub">Count down to your next moment</div>
+      </div>
+      <div class="widget-card">
+        <div class="widget-icon">🔥</div>
+        <div class="widget-title">Streak</div>
+        <div class="widget-sub">Track consecutive days together</div>
+      </div>
     </div>
   </section>
+
+  <!-- FEATURES -->
   <section id="features">
     <div class="container">
       <div class="section-label">Features</div>
       <h2 class="section-title">Everything you need to feel connected</h2>
-      <p class="section-sub">Three beautiful lock screen widgets, designed for couples who want to stay close – wherever they are.</p>
+      <p class="section-sub">Four beautiful widgets for your lock screen, designed for couples who want to stay close – wherever they are.</p>
+
       <div class="features-grid">
-        <div class="feature-card"><div class="feature-emoji">📍</div><div class="feature-name">Live Distance Widget</div><div class="feature-desc">Always know how far away your partner is. The distance widget updates automatically and displays the current distance right on your lock screen – no app opening needed.</div></div>
-        <div class="feature-card"><div class="feature-emoji">💌</div><div class="feature-name">Lock Screen Messages</div><div class="feature-desc">Send sweet notes that appear directly on your partner’s lock screen. A little reminder that you’re thinking of them – always visible, always personal.</div></div>
-        <div class="feature-card"><div class="feature-emoji">⏳</div><div class="feature-name">Countdown Widget</div><div class="feature-desc">Create a countdown to the moments that matter most – your next date, anniversary, or reunion. Watch the days tick down together, side by side on your screens.</div></div>
-        <div class="feature-card"><div class="feature-emoji">🔒</div><div class="feature-name">Lock Screen Native</div><div class="feature-desc">Built natively for iOS 16+ lock screen widgets. Seamlessly integrated into the iOS experience you already love, with beautiful design that matches any wallpaper.</div></div>
-        <div class="feature-card"><div class="feature-emoji">🎨</div><div class="feature-name">Customizable Style</div><div class="feature-desc">Choose from multiple widget sizes and color styles. Make your lock screen truly yours – and your partner’s. Mix and match to find the perfect look.</div></div>
-        <div class="feature-card"><div class="feature-emoji">🔐</div><div class="feature-name">Private by Design</div><div class="feature-desc">Your messages and location are only shared with your partner – nobody else. We take your privacy seriously and collect the minimum data possible.</div></div>
+        <div class="feature-card">
+          <div class="feature-emoji">📍</div>
+          <div class="feature-name">Live Distance Widget</div>
+          <div class="feature-desc">Always know how far away your partner is. The distance widget updates automatically using your location and displays the current distance right on your lock screen – no app opening needed.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-emoji">💌</div>
+          <div class="feature-name">Shared Note Widget</div>
+          <div class="feature-desc">You and your partner share one note (up to 100 characters) that appears directly on your lock screens. Write a sweet message, update it any time, and your partner gets a notification instantly.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-emoji">⏳</div>
+          <div class="feature-name">Countdown Widget</div>
+          <div class="feature-desc">Create a countdown to the moments that matter most – your next date, anniversary, or reunion. Watch the days tick down together, side by side on your screens.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-emoji">🔥</div>
+          <div class="feature-name">Streak Widget</div>
+          <div class="feature-desc">Keep your connection alive every day. The streak widget tracks consecutive days of activity between you and your partner, celebrating how long you've stayed in touch.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-emoji">🔒</div>
+          <div class="feature-name">Lock Screen Native</div>
+          <div class="feature-desc">Built natively for iOS 16+ lock screen widgets. Seamlessly integrated into the iOS experience you already love, with beautiful design that matches any wallpaper.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-emoji">🔐</div>
+          <div class="feature-name">Private by Design</div>
+          <div class="feature-desc">Sign in securely with your Apple ID. Your note and location are only shared with your connected partner – never with third parties or advertisers. Sync is powered by Apple's iCloud.</div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- HOW IT WORKS -->
   <section id="how">
     <div class="container">
       <div class="section-label">How it works</div>
       <h2 class="section-title">Set up in minutes</h2>
       <p class="section-sub">Getting started with TwoUfUs is quick and simple.</p>
+
       <div class="steps">
-        <div class="step"><div class="step-num">1</div><h3>Download the app</h3><p>Get TwoUfUs from the App Store on both your and your partner’s iPhone.</p></div>
-        <div class="step"><div class="step-num">2</div><h3>Connect with your partner</h3><p>Share a simple invite link or code to pair your devices together securely.</p></div>
-        <div class="step"><div class="step-num">3</div><h3>Add your widgets</h3><p>Long-press your lock screen, tap the + button, and add your TwoUfUs.</p></div>
-        <div class="step"><div class="step-num">4</div><h3>Stay connected</h3><p>Send messages, see your distance, and count down to your next moment – always within reach.</p></div>
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Download the app</h3>
+          <p>Get TwoUfUs from the App Store on both your and your partner's iPhone (iOS 16+).</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Sign in with Apple</h3>
+          <p>Create your account securely using Sign in with Apple – no password, no separate registration required.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Connect with your partner</h3>
+          <p>Share your unique invite code with your partner. Once they enter it, you're paired and ready to go.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>Add your widgets</h3>
+          <p>Long-press your lock screen, tap the + button, and add your TwoUfUs widgets. Stay connected, always.</p>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- PRIVACY HIGHLIGHT -->
   <section id="privacy-highlight">
     <div class="container">
       <div class="privacy-box">
         <div class="privacy-icon">🔐</div>
         <div class="privacy-content">
           <h2>Your privacy matters</h2>
-          <p>TwoUfUs is built with privacy at its core. Your location and messages are only ever shared with your connected partner – never with third parties, advertisers, or anyone else. We collect the minimum data required to make the app work, and you can delete your data at any time.</p>
+          <p>TwoUfUs is built with privacy at its core. Your location and notes are only ever shared with your connected partner – never with third parties, advertisers, or anyone else. We use Apple's iCloud (CloudKit) for sync, so your data stays within Apple's secure infrastructure. Sign in with Apple means no separate account, no password to manage.</p>
           <a href="privacy.html" class="privacy-link">Read our full Privacy Policy →</a>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-logo">💑 TwoUfUs</div>
@@ -150,8 +365,9 @@
         <a href="support.html">Support</a>
         <a href="privacy.html">Privacy Policy</a>
       </div>
-      <div class="footer-copy">© 2025 TwoUfUs. All rights reserved.</div>
+      <div class="footer-copy">© 2026 TwoUfUs. All rights reserved.</div>
     </div>
   </footer>
+
 </body>
 </html>
